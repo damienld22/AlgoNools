@@ -2,26 +2,26 @@
 import("./Functions.js");
 import("./Objets.js");
 
-// Une première règle qui incrémente la consigne
-// jusqu'à 20
-rule Rule1 {
+// Règle test pour augmenter la luminosité
+rule augLum {
 	when {
-		chauf : Chauffage chauf.getValue() < 20;
+		lum1 : CaptLuminosite lum1.getPlace() == 'interieur' && lum1.getValue() <= 600;
 	}
 	then {
-		var val = chauf.getValue() +1;
-		modify(chauf, chauf.setValue(val));
-		afficher(chauf.value);
+		var val = lum1.getValue() +1;
+		modify(lum1, lum1.setValue(val));
+		afficher(lum1.getValue());
 	}
 }
 
-// Seconde règle qui indique la fin du programme
-// quand la consigne est à 20
-rule Rule2 {
+// Règle test pour réinitialiser la valeur
+rule reiLum {
 	when {
-		chauf : Chauffage chauf.value == 20;
+		lum2 : CaptLuminosite lum2.getPlace() == 'interieur' && lum2.getValue() == 550;
 	}			
 	then {
-		console.log("Fin du programme");
+		var val = 450;
+		modify(lum2, lum2.setValue(val));
+		afficher(lum2.getValue() + "**");
 	}
 }
