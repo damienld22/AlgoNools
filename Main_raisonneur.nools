@@ -1,24 +1,17 @@
-// Import fichier de fonctions
+// Import fichier de fonctions et d'objets
 import("./Functions.js");
-
-// Création de l'objet chauffage
-define Chauffage {
-	consigne : 0,
-	constructor : function(valeur) {
-		this.consigne = valeur;
-	}
-}
-
+import("./Objets.js");
 
 // Une première règle qui incrémente la consigne
 // jusqu'à 20
 rule Rule1 {
 	when {
-		chauf : Chauffage chauf.consigne < 20;
+		chauf : Chauffage chauf.getValue() < 20;
 	}
 	then {
-		modify(chauf, function(){this.consigne += 1;});
-		afficher(chauf.consigne);
+		var val = chauf.getValue() +1;
+		modify(chauf, chauf.setValue(val));
+		afficher(chauf.value);
 	}
 }
 
@@ -26,8 +19,8 @@ rule Rule1 {
 // quand la consigne est à 20
 rule Rule2 {
 	when {
-		chauf : Chauffage chauf.consigne == 20;
-	}
+		chauf : Chauffage chauf.value == 20;
+	}			
 	then {
 		console.log("Fin du programme");
 	}

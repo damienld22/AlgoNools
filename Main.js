@@ -6,7 +6,7 @@ var session = flow.getSession();
 
 // Création d'un objet chauffage
 var Chauffage = flow.getDefined('chauffage');
-session.assert(new Chauffage (10));
+session.assert(new Chauffage (true, 10));
 
 // Démarrage du raisonneur
 session.match();
