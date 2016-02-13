@@ -1,6 +1,6 @@
 // Correspondance entre nools et ce fichier JS
 var nools = require ('nools');
-var ruleFilePath = __dirname + '/ProjetTest.nools';
+var ruleFilePath = __dirname + '/Main_raisonneur.nools';
 var flow = nools.compile(ruleFilePath);
 var session = flow.getSession();
 
