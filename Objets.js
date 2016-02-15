@@ -4,15 +4,23 @@
  *		-	Capteur de température
  *		-	Capteur de luminosité
  *		-	Volet
- *
- *		-	Consigne de luminosité
- *		-	Consigne de température
+ *		-	Consignes
+ *			
 */
+ 
+define Consigne {
+	lum : null,			// consigne luminosité intérieure
+	temp : null,		// consigne température intérieure
+	nuit : null,		// consigne luminosité max lorsque c'est la nuit
+	jourSuf : null,		// consigne luminosité min à l'extérieur pour avoir un apport dans la maison
 
-var consigne_lum = 500;
-var consigne_temp = 19;
-
-
+	constructor : function() {
+		this.lum = 500;
+		this.temp = 19;
+		this.nuit = 100;
+		this.jourSuf = 300;
+	}
+}
 
  define Chauffage {
  	etat : null,
@@ -53,6 +61,16 @@ define Lumiere {
 		if(value >= 100) {this.value = 100;}
 		else if(value <= 0) {this.value = 0;}
 		else {this.value = value;} 
+	},
+	setUp : function() {
+		if(this.value!=100){
+			this.value += 1;
+		}
+	},
+	setDown : function() {
+		if(this.value!=0){
+			this.value -= 1;
+		}
 	}
 }
 
@@ -134,5 +152,15 @@ define Volet {
 		if(value>=100){this.value=100;}
 		else if(value<=0){this.value=0;}
 		else {this.value = value;}
+	},
+	setUp : function() {
+		if(this.value!=100){
+			this.value += 1;
+		}
+	},
+	setDown : function() {
+		if(this.value!=0){
+			this.value -= 1;
+		}
 	}
 }

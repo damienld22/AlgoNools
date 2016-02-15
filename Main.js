@@ -21,10 +21,13 @@ var CaptLuminosite = flow.getDefined('captLuminosite');
 session.assert(new CaptLuminosite('exterieur', true, 400));
 // Création d'un capteur de luminosité intérieur
 var CaptLuminosite = flow.getDefined('captLuminosite');
-session.assert(new CaptLuminosite('interieur', true, 500));
+session.assert(new CaptLuminosite('interieur', true, 400));
 // Création d'un volet
 var Volet = flow.getDefined('volet');
 session.assert(new Volet(0));
+// Création de l'objet de consigne
+var Consigne = flow.getDefined('consigne');
+session.assert(new Consigne());
 
 
 // Démarrage du raisonneur
