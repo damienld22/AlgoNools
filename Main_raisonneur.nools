@@ -5,35 +5,26 @@ import("./Objets.js");
 /*
  * Règles gérant la luminosité en agissant sur les volets et la lumière
  */
-
-
-
- //	======== Code ne fonctionnant pas, à corriger ============
-
-
-
-// Fonctions nécessaires à l'exécution des règles
-function augLum(lumExt, lum, volet, consigne) {
-	if (volet == 100 && lum < 100) {
-		lumiere.setUp();
-	}
-	else if(volet < 100 && LumExt > consigne) {
-		volet.setUp();
-	}
-}
-
-
-// Règle d'augmentation de la luminosité
 rule augLum1 {
 	when {
-		consigne : Consigne;
-		capLumInt : CaptLuminosite capLumInt.getPlace() == 'interieur' && capLumInt.getValue() < (consigne.lum - 25);
-		captLumExt : CaptLuminosite captLumExt.getPlace() == 'exterieur';
-		volet : Volet;
-		lum : Lumiere; 
+		consigne: Consigne;
+		capLum  : CaptLuminosite capLum.getPlace() == 'interieur' && capLum.getValue() < (consigne.lum - 25);
+		volet   : Volet volet.getValue() == 100;
+		lum     : Lumiere lum.getValue() < 100;		
 	}
 	then {
-		afficher(capLumInt.getValue());
-		augLum(captLumExt.getValue(), lum.getValue(), volet.getValue(), consigne.jourSuf());
+		modify(lum, lum.setUp());
+	}
+}
+rule augLum2 {
+	when {
+		consigne : Consigne;
+		capLum   : CaptLuminosite capLum.getPlace() == 'interieur' && capLum.getValue() < (consigne.lum - 25);
+		volet    : Volet volet.getValue() < 100;
+		capLumExt: CaptLuminosite capLumExt.getPlace() == 'exterieur' && capLumExt.getValue() > consigne.jourSuf;
+	}
+	then {
+		modify(volet, volet.setUp());
+		afficher(volet.getValue());
 	}
 }

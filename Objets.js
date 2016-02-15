@@ -9,26 +9,26 @@
 */
  
 define Consigne {
-	lum : null,			// consigne luminosité intérieure
-	temp : null,		// consigne température intérieure
-	nuit : null,		// consigne luminosité max lorsque c'est la nuit
-	jourSuf : null,		// consigne luminosité min à l'extérieur pour avoir un apport dans la maison
+	lum    : null,			// consigne luminosité intérieure
+	temp   : null,		// consigne température intérieure
+	nuit   : null,		// consigne luminosité max lorsque c'est la nuit
+	jourSuf: null,		// consigne luminosité min à l'extérieur pour avoir un apport dans la maison
 
 	constructor : function() {
-		this.lum = 500;
-		this.temp = 19;
-		this.nuit = 100;
+		this.lum     = 500;
+		this.temp    = 19;
+		this.nuit    = 100;
 		this.jourSuf = 300;
 	}
 }
 
  define Chauffage {
- 	etat : null,
- 	value : null,
+		etat : null,
+		value: null,
  	
  	constructor : function(etat, valeur) {
- 		this.etat = etat;
- 		this.value = valeur;
+			this.etat  = etat;
+			this.value = valeur;
  	},
 
  	getEtat: function() {
@@ -75,13 +75,13 @@ define Lumiere {
 }
 
 define CaptTemperature {
-	place : null,
+	place: null,
 	etat : null,
-	value : null,
+	value: null,
 
 	constructor : function(place, etat, value) {
 		this.place = place;
-		this.etat = etat;
+		this.etat  = etat;
 		this.value = value;
 	},
 
@@ -106,13 +106,13 @@ define CaptTemperature {
 }
 
 define CaptLuminosite {
-	place : null,
+	place: null,
 	etat : null,
-	value : null,
+	value: null,
 
 	constructor : function(place, etat, value) {
 		this.place = place;
-		this.etat = etat;
+		this.etat  = etat;
 		this.value = value;
 	},
 
