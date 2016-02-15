@@ -1,10 +1,18 @@
-/*	Fichier contenant tous les équipements
+/*	Fichier contenant tous les équipements et les variables globales
  *		-	Chauffage
  *		-	Lumière
  *		-	Capteur de température
  *		-	Capteur de luminosité
  *		-	Volet
+ *
+ *		-	Consigne de luminosité
+ *		-	Consigne de température
 */
+
+var consigne_lum = 500;
+var consigne_temp = 19;
+
+
 
  define Chauffage {
  	etat : null,
