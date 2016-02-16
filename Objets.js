@@ -3,6 +3,7 @@
 //	Fichier contenant tous les équipements nécessaires
 //			->	Chauffage, Lumière, Volet
 //			->	Capteurs (température, luminosité)
+//			->	Capteur de CO2
 //			->	Consignes
 //
 //	*******************************************************************
@@ -176,5 +177,42 @@ define Volet {
 		if(this.value!=0){
 			this.value -= 1;
 		}
+	}
+}
+
+define captCO2 {
+	value : null,
+
+	constructor : function(value) {
+		this.value = value;
+	},
+
+	getValue : function() {
+		return this.value;
+	},
+	setValue : function(value) {
+		this.value = value;
+	}
+}
+
+define VMC {
+	etat : null,
+	value: null,
+
+	constructor : function(etat, value) {
+		this.etat = etat;
+		this.value = value;
+	},
+	getEtat : function() {
+		return this.etat;
+	},
+	getValue : function() {
+		return this.value;
+	},
+	setEtat : function(etat) {
+		this.etat = etat;
+	}, 
+	setValue : function(value) {
+		this.value = value;
 	}
 }
