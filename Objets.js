@@ -14,16 +14,18 @@ define Consigne {
 	temp   : null,		// consigne température intérieure
 	nuit   : null,		// consigne luminosité max lorsque c'est la nuit
 	jourSuf: null,		// consigne luminosité min à l'extérieur pour avoir un apport dans la maison
-	tempSuf: null,		// température suffisante pour chauffer la maison avec l'éclairage extérieur
-	lumSuf : null,		// Luminosité minimale à l 'extérieur pour chauffer le bâtiment 
+	tempSuf: null,		// température suffisante pour chauffer la maison avec l'éclairage extérieur 
+	lumSuf : null,		// Luminosité minimale à l 'extérieur pour chauffer le bâtiment
+	co2	   : null,		// Consigne de CO2 maximale
 
 	constructor : function() {
-		this.lum     = 500;
-		this.temp    = 19;
-		this.nuit    = 100;
-		this.jourSuf = 300;
-		this.tempSuf = 15;
-		this.lumSuf  = 500;
+		this.lum     = 500;		// lux
+		this.temp    = 19;		// °C
+		this.nuit    = 100;		// lux
+		this.jourSuf = 300;		// lux
+		this.tempSuf = 15;		// °C
+		this.lumSuf  = 500;		// lux
+		this.co2	 = 300;		// ppm
 	}
 }
 
@@ -180,7 +182,7 @@ define Volet {
 	}
 }
 
-define captCO2 {
+define CaptCO2 {
 	value : null,
 
 	constructor : function(value) {
@@ -209,10 +211,10 @@ define VMC {
 	getValue : function() {
 		return this.value;
 	},
-	setEtat : function(etat) {
-		this.etat = etat;
+	setV1 : function() {
+		this.value = 1;
 	}, 
-	setValue : function(value) {
-		this.value = value;
+	setV2 : function() {
+		this.value = 2;
 	}
 }

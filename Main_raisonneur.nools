@@ -111,3 +111,30 @@ rule dimChauf {
 		modify(chauf, chauf.setDown());
 	}
 }
+
+
+//	===================================================================
+//	Règles pour gérer la VMC
+//		->	augVMC pour augmenter la vitesse
+//		->	dimVMC pour diminuer la vitesse
+//	===================================================================
+rule augVMC {
+	when {
+		consigne: Consigne;
+		captCo2 : CaptCO2 captCo2.getValue() > (consigne.co2 + 5);
+		vmc     : VMC vmc.getValue() != 2;
+	}
+	then {
+		modify(vmc, vmc.setV2());
+	}
+}
+rule dimVMC {
+	when {
+		consigne: Consigne;
+		captCo2 : CaptCO2 captCo2.getValue() < (consigne.co2 - 5);
+		vmc     : VMC vmc.getValue() != 1;
+	}
+	then {
+		modify(vmc, vmc.setV1());
+	}
+}

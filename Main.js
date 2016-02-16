@@ -40,6 +40,12 @@ session.assert(new Volet(1));
 // Création de l'objet de consigne
 var Consigne        = flow.getDefined('consigne');
 session.assert(new Consigne());
+// Création de l'objet VMC
+var VMC				= flow.getDefined('VMC');
+session.assert(new VMC(true, 2));
+// Création du capteur de CO2
+var CaptCO2			= flow.getDefined('captCO2');
+session.assert(new CaptCO2(400));
 
 
 // Démarrage du raisonneur
