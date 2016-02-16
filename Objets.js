@@ -1,13 +1,13 @@
-/*	Fichier contenant tous les équipements et les variables globales
- *		-	Chauffage
- *		-	Lumière
- *		-	Capteur de température
- *		-	Capteur de luminosité
- *		-	Volet
- *		-	Consignes
- *			
-*/
- 
+//	*******************************************************************
+//
+//	Fichier contenant tous les équipements nécessaires
+//			->	Chauffage, Lumière, Volet
+//			->	Capteurs (température, luminosité)
+//			->	Consignes
+//
+//	*******************************************************************
+
+
 define Consigne {
 	lum    : null,		// consigne luminosité intérieure
 	temp   : null,		// consigne température intérieure
@@ -26,9 +26,9 @@ define Consigne {
 	}
 }
 
- define Chauffage {
-		etat : null,
-		value: null,
+define Chauffage {
+	etat : null,
+	value: null,
  	
  	constructor : function(etat, valeur) {
 			this.etat  = etat;
@@ -57,7 +57,7 @@ define Consigne {
 			this.value -= 1;
 		}
 	}
- }
+}
 
 define Lumiere {
 	value : null,

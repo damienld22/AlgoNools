@@ -1,6 +1,14 @@
-// Import fichier de fonctions et d'objets
+//	*******************************************************************
+//
+//	Fichier comportant toutes les règles destinées au raisonneur
+//
+//	*******************************************************************
+
+
 import("./Functions.js");
 import("./Objets.js");
+
+
 
 //	===================================================================
 //	Règles pour gérer la luminosité

@@ -1,5 +1,10 @@
-// Fonction externe pour tester si on peut prendre
-// des fonctions qui nous sont pas propres (API)
+//	*******************************************************************
+//
+//	Fonctions externes pour travailler via les API nécessaires
+//
+//	*******************************************************************
+
+// Fonction de test
 function afficher(valeur){
 	console.log(valeur);
 }

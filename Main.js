@@ -1,3 +1,15 @@
+//	*******************************************************************
+//
+//	Fichier principal : Démarrage du programme
+//			->	Initialisation du programme
+//			->	Lancement de nools
+//			->	Création des équipements
+//
+//	*******************************************************************
+
+
+
+
 // Correspondance entre nools et ce fichier JS
 var nools           = require ('nools');
 var ruleFilePath    = __dirname + '/Main_raisonneur.nools';
