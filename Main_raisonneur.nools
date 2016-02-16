@@ -50,3 +50,56 @@ rule dimLum2 {
 		modify(volet, volet.setDown());
 	}
 }
+
+
+//	==================================================================
+//	Règles pour gérer le chauffage
+//		->	augChauf1, augChauf2 et augChauf3 pour l'augmenter
+//		->	dimChauf pour le diminuer
+//	==================================================================
+rule augChauf1 {
+	when {
+		consigne  : Consigne;
+		capTemp   : CaptTemperature capTemp.getPlace() == 'interieur' && capTemp.getValue() < (consigne.temp - 1);
+		volet     : Volet volet.getValue() < 100;
+		capTempExt: CaptTemperature capTempExt.getPlace() == 'exterieur' && capTempExt.getValue() >= consigne.tempSuf;
+		capLum    : CaptLuminosite capLum.getPlace() == 'exterieur' && capLum.getValue() >= consigne.lumSuf;
+	}
+	then {
+		modify(volet, volet.setUp());
+	}
+}
+rule augChauf2 {
+	when {
+		consigne: Consigne;
+		chauf   : Chauffage;
+		capTemp : CaptTemperature capTemp.getPlace() == 'interieur' && capTemp.getValue() < (consigne.temp - 1);
+		volet   : Volet volet.getValue() < 100;
+		or( capTempExt: CaptTemperature capTempExt.getPlace() == 'exterieur' && capTempExt.getValue() < consigne.tempSuf,
+			capLum    : CaptLuminosite capLum.getPlace() == 'exterieur' && capLum.getValue() < consigne.lumSuf);
+	} 
+	then {
+		modify(chauf, chauf.setUp());
+	}
+}
+rule augChauf3 {
+	when {
+		consigne: Consigne;
+		capTemp : CaptTemperature capTemp.getPlace() == 'interieur' && capTemp.getValue() < (consigne.temp - 1);
+		volet   : Volet volet.getValue() == 100;
+		chauf   : Chauffage;
+	}
+	then {
+		modify(chauf, chauf.setUp());
+	}
+}
+rule dimChauf {
+	when {
+		consigne: Consigne;
+		chauf   : Chauffage;
+		capTemp : CaptTemperature capTemp.getPlace() == 'interieur' && capTemp.getValue() > (consigne.temp + 1);
+	}
+	then {
+		modify(chauf, chauf.setDown());
+	}
+}

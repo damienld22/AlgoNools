@@ -12,19 +12,19 @@ var Lumiere         = flow.getDefined('lumiere');
 session.assert(new Lumiere (50));
 // Création d'un capteur de température extérieur
 var CaptTemperature = flow.getDefined('captTemperature');
-session.assert(new CaptTemperature('exterieur', true, 20));
+session.assert(new CaptTemperature('exterieur', true, 16));
 // Création d'un capteur de température intérieur
 var CaptTemperature = flow.getDefined('captTemperature');
-session.assert(new CaptTemperature('interieur', true, 18));
+session.assert(new CaptTemperature('interieur', true, 15));
 // Création d'un capteur de luminosité extérieur
 var CaptLuminosite  = flow.getDefined('captLuminosite');
-session.assert(new CaptLuminosite('exterieur', true, 400));
+session.assert(new CaptLuminosite('exterieur', true, 600));
 // Création d'un capteur de luminosité intérieur
 var CaptLuminosite  = flow.getDefined('captLuminosite');
 session.assert(new CaptLuminosite('interieur', true, 600));
 // Création d'un volet
 var Volet           = flow.getDefined('volet');
-session.assert(new Volet(90));
+session.assert(new Volet(1));
 // Création de l'objet de consigne
 var Consigne        = flow.getDefined('consigne');
 session.assert(new Consigne());
