@@ -63,8 +63,9 @@ rule dimLum2 {
 //	==================================================================
 //	Règles pour gérer le chauffage
 //		->	augChauf1, augChauf2 et augChauf3 pour l'augmenter
-//		->	dimChauf pour le diminuer
+//		->	dimChauf1 et dimChauf2 pour le diminuer
 //	==================================================================
+
 rule augChauf1 {
 	when {
 		consigne  : Consigne;
@@ -101,14 +102,27 @@ rule augChauf3 {
 		modify(chauf, chauf.setUp());
 	}
 }
-rule dimChauf {
+rule dimChauf1 {
 	when {
 		consigne: Consigne;
-		chauf   : Chauffage;
+		chauf   : Chauffage chauf.getValue() != 0;
 		capTemp : CaptTemperature capTemp.getPlace() == 'interieur' && capTemp.getValue() > (consigne.temp + 1);
 	}
 	then {
 		modify(chauf, chauf.setDown());
+	}
+}
+
+rule dimChauf2 {
+	when {
+		consigne  : Consigne;
+		chauf     : Chauffage chauf.getValue() == 0;
+		capTemp   : CaptTemperature capTemp.getPlace() == 'interieur' && capTemp.getValue() > (consigne.temp + 1);
+		capLum    : CaptLuminosite capLum.getPlace() == 'exterieur' && capLum.getValue() > consigne.lumFort;
+		volet     : Volet volet.getValue() != 0;
+	}
+	then {
+		modify(volet, volet.setDown());
 	}
 }
 

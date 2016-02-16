@@ -17,6 +17,7 @@ define Consigne {
 	tempSuf: null,		// température suffisante pour chauffer la maison avec l'éclairage extérieur 
 	lumSuf : null,		// Luminosité minimale à l 'extérieur pour chauffer le bâtiment
 	co2	   : null,		// Consigne de CO2 maximale
+	lumFort: null,		// Luminosité trop forte, qui chauffe la maison
 
 	constructor : function() {
 		this.lum     = 500;		// lux
@@ -26,6 +27,7 @@ define Consigne {
 		this.tempSuf = 15;		// °C
 		this.lumSuf  = 500;		// lux
 		this.co2	 = 300;		// ppm
+		this.lumFort = 1000;	// lux
 	}
 }
 
