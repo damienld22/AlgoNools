@@ -2,9 +2,11 @@
 import("./Functions.js");
 import("./Objets.js");
 
-/*
- * Règles gérant la luminosité en agissant sur les volets et la lumière
- */
+//	===================================================================
+//	Règles pour gérer la luminosité
+//		->	augLum1 et augLum2 pour l'augmenter
+//		->	dimLum1 et dimLum2 pour diminuer
+//	===================================================================
 rule augLum1 {
 	when {
 		consigne: Consigne;
@@ -25,6 +27,26 @@ rule augLum2 {
 	}
 	then {
 		modify(volet, volet.setUp());
-		afficher(volet.getValue());
+	}
+}
+rule dimLum1 {
+	when {
+		consigne: Consigne;
+		capLum  : CaptLuminosite capLum.getPlace() == 'interieur' && capLum.getValue() > (consigne.lum + 25);
+		lum     : Lumiere lum.getValue() > 0;
+	}
+	then {
+		modify(lum, lum.setDown());
+	}
+}
+rule dimLum2 {
+	when {
+		consigne: Consigne;
+		capLum  : CaptLuminosite capLum.getPlace() == 'interieur' && capLum.getValue() > (consigne.lum + 25);
+		lum     : Lumiere lum.getValue() == 0;
+		volet   : Volet volet.getValue() > 0;
+	}
+	then {
+		modify(volet, volet.setDown());
 	}
 }

@@ -21,7 +21,7 @@ var CaptLuminosite  = flow.getDefined('captLuminosite');
 session.assert(new CaptLuminosite('exterieur', true, 400));
 // Création d'un capteur de luminosité intérieur
 var CaptLuminosite  = flow.getDefined('captLuminosite');
-session.assert(new CaptLuminosite('interieur', true, 400));
+session.assert(new CaptLuminosite('interieur', true, 600));
 // Création d'un volet
 var Volet           = flow.getDefined('volet');
 session.assert(new Volet(90));
